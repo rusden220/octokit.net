@@ -34,7 +34,7 @@ namespace Octokit
             Ensure.ArgumentNotNullOrEmptyString(owner, "owner");
             Ensure.ArgumentNotNullOrEmptyString(name, "name");
             Ensure.ArgumentNotNullOrEmptyString(reference, "reference");
-
+			
             return ApiConnection.Get<Blob>(ApiUrls.Blob(owner, name, reference));
         }
 
@@ -56,5 +56,18 @@ namespace Octokit
 
             return ApiConnection.Post<BlobReference>(ApiUrls.Blob(owner, name), newBlob);
         }
-    }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="reference"></param>
+		/// <returns></returns>		
+		public Task<Blob> Get(string id, string reference)
+		{
+			Ensure.ArgumentNotNullOrEmptyString(id, "id");
+			Ensure.ArgumentNotNullOrEmptyString(reference, "reference");
+
+			return ApiConnection.Get<Blob>(ApiUrls.BlobById(id, reference));
+		}
+	}
 }

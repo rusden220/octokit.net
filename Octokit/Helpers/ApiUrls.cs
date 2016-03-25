@@ -1161,6 +1161,21 @@ namespace Octokit
             }
             return blob.FormatUri(owner, name, reference);
         }
+		/// <summary>
+		/// Returns the <see cref="Uri"/> for a specifc blob.
+		/// </summary>
+		/// <param name="id">repositorie's id</param>
+		/// <param name="reference">The SHA of the blob</param>
+		/// <returns></returns>
+		public static Uri BlobById(string id, string reference)
+		{
+			string blob = "repositories/{0}/git/blobs";
+			if (!string.IsNullOrEmpty(reference))
+			{
+				blob += "/{1}";
+			}
+			return blob.FormatUri(id, reference);
+		}
 
         /// <summary>
         /// Returns the <see cref="Uri"/> for the specified tree.

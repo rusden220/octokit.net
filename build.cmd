@@ -37,4 +37,5 @@ rem Bail if we're running a MyGet build.
 if /i "%BuildRunner%"=="MyGet" goto Quit
 
 :Quit
+Pause
 exit /b %errorlevel%

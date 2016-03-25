@@ -52,6 +52,15 @@ namespace Octokit
             var endpoint = "users/{0}".FormatUri(login);
             return ApiConnection.Get<User>(endpoint);
         }
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "client")]
+		public Task<User> Get(string login,IGitHubClient client)
+		{			
+			Ensure.ArgumentNotNullOrEmptyString(login, "login");
+
+			var endpoint = "users/{0}".FormatUri(login);
+			return ApiConnection.Get<User>(endpoint);
+
+		}
 
         /// <summary>
         /// Returns a <see cref="User"/> for the current authenticated user.
